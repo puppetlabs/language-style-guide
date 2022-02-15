@@ -1,0 +1,17 @@
+- label: Navigation
+  items:
+    - name: Home
+      link: /
+    - name: Language Style Guide
+      link: /guide/
+      items:
+        - name: About
+          link: /guide/about/
+        - name: Principles
+          link: /guide/principles/
+        - name: Module Layout
+          link: /guide/layout/
+        - name: Tooling
+          link: /guide/tooling/
+    - name: Collaborate
+      link: https://github.com/puppetlabs/language-style-guide

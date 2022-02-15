@@ -1,0 +1,9 @@
+- name: Puppet Forge
+  link: https://forge.puppet.com/
+- name: Documentation
+  link: https://puppet.com/docs/
+- name: Get Support
+  link: https://puppet.com/support/
+- name: Puppet Language Style Guide
+  link: https://puppet.com/docs/puppet/latest/style_guide.html
+

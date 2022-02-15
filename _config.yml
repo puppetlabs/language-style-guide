@@ -1,0 +1,11 @@
+remote_theme: chrisrhymes/bulma-clean-theme
+footer_menu: footer
+defaults:
+  -
+    scope:
+      path: guide
+    values:
+      layout: page
+      hide_hero: true
+      menubar: menubar
+

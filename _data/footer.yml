@@ -1,0 +1,9 @@
+- name: Legal
+  link: https://puppet.com/legal/
+- name: Privacy Policy
+  link: https://puppet.com/legal/privacy-policy/
+- name: Terms of Use
+  link: https://puppet.com/legal/terms-of-use/
+- name: Security
+  link: https://puppet.com/security/
+
