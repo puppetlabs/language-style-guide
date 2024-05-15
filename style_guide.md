@@ -72,10 +72,51 @@ Manifests:
 
 
 -   Should not exceed a 140-character line width, except where such a limit would be impractical.
-
+-   May align hash rockets \(`=>`\) within blocks of attributes, one space after the longest resource key, arranging hashes for maximum readability first.
+-   Should not leave any empty lines between class declaration and the first declared resource.
 -   Should leave one empty line between resources, except when using dependency chains.
 
--   May align hash rockets \(`=>`\) within blocks of attributes, one space after the longest resource key, arranging hashes for maximum readability first.
+    Good:
+
+    ```
+    class ntp::install {
+      package { $ntp::package_name:
+        ...
+      }
+
+      exec {
+        ...
+      }
+    }
+    ```
+
+    Bad: Empty line after class declaration:
+
+    ```
+    class ntp::install {
+
+      package { $ntp::package_name:
+        ...
+      }
+
+      exec {
+        ...
+      }
+    }
+    ```
+
+    Bad: No empty line between resource declarations:
+
+    ```
+    class ntp::install {
+      package { $ntp::package_name:
+        ...
+      }
+      exec {
+        ...
+      }
+    }
+    ```
 
 
 ### Arrays and hashes
