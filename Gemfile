@@ -1,6 +1,6 @@
 source "http://rubygems.org"
 
-gem 'github-pages', '>= 226', group: :jekyll_plugins do
+gem 'github-pages', '>= 227', group: :jekyll_plugins do
 
 gem 'jekyll-paginate'
 
