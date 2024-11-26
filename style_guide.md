@@ -690,6 +690,39 @@ file { '/var/log/syslog':
 }
 ```
 
+### File ensure
+
+When using the file type, the ensure attribute should not use 'present' but the specific file type 'file|directory|symlink' for the resource being created. This keeps the expected outcome of the resource clear.
+
+Good:
+
+```puppet
+file { '/var/log/syslog':
+  ensure => link,
+  target => '/var/log/messages',
+}
+file { '/tmp/readme.txt':
+  ensure => file,
+  owner  => '0',
+  group  => '0',
+  mode   => '0644',
+}
+```
+
+Bad:
+```
+file { '/var/log/syslog':
+  ensure => present,
+  target => '/var/log/messages',
+}
+file { '/tmp/readme.txt':
+  ensure => present,
+  owner  => '0',
+  group  => '0',
+  mode   => '0644',
+}
+```
+
 ### Multiple resources
 
 Multiple resources declared in a single block should be used only when there is also a default set of options for the resource type.
