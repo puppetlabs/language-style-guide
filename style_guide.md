@@ -316,7 +316,7 @@ A string SHOULD be enclosed in single quotes if it does not contain variable int
     -   Bad:
 
         ```no-highlight
-        warning("Class[\"apache\"] parameter purge_vdir is deprecated in favor of purge_configs") 
+        warning("Class[\"apache\"] parameter purge_vdir is deprecated in favor of purge_configs")
         ```
 
 -   Contains literal backslash characters that are not intended to be part of an escape sequence.
@@ -334,20 +334,20 @@ A string SHOULD be enclosed in single quotes if it does not contain variable int
         ```
 
 
-If a string is a value from an enumerable set of options, such as `present` and `absent`, it SHOULD NOT be enclosed in quotes at all.
+If a string is a value from an enumerable set of options, such as `present` and `absent`, it SHOULD be enclosed in quotes just like any other string.
 
 For example:
 
 Good:
 
 ```
-ensure => present
+ensure => "present"
 ```
 
 Bad:
 
 ```
-ensure => "present"
+ensure => present
 ```
 
 ### Escape characters
@@ -415,7 +415,7 @@ $foods = {
  "strawberry" => "fruit",
  "raspberry"  => "fruit",
 }
- 
+
 $berries = $foods.filter |$name, $kind| {
  # Choose only fruits
  $kind == "fruit"
@@ -437,11 +437,11 @@ $foods = {
  "strawberry" => "fruit",
  "raspberry"  => "fruit",
 }
- 
+
 $berries = $foods.filter |$name, $kind| { $kind == "fruit" }.map |$name, $kind| { String($name, "%c") }.filter |$fruit| { $fruit =~ /berry$/ }
 ```
 
-**Related information**  
+**Related information**
 
 
 [Modules](style_guide.md#)
@@ -594,7 +594,7 @@ Good:
 $defaults = { < hash of defaults > }
 
 file {
-  default: 
+  default:
     * => $defaults,;
 
   '/tmp/testfile':
@@ -608,7 +608,7 @@ Good: Repeated pattern with defaults:
 $defaults = { < hash of defaults > }
 
 file {
-  default: 
+  default:
     * => $defaults,;
 
   '/tmp/motd':
@@ -746,11 +746,11 @@ file {
 Good: Give the defaults a name if used several times:
 
 ```
-$our_default_file_attributes = { 
-  'ensure' => 'file', 
-  'mode'   => '0666', 
+$our_default_file_attributes = {
+  'ensure' => 'file',
+  'mode'   => '0666',
 }
- 
+
 file {
   default:
     * => $our_default_file_attributes,;
@@ -801,7 +801,7 @@ file {
 file { ['/owner', '/staff']:
   ensure => 'file',
 }
- 
+
 file { $array_of_paths:
   ensure => 'file',
 }
@@ -890,7 +890,7 @@ For multiple bodies, each title should be on its own line, and be indented. You 
 file {
   default:
     * => $local_defaults,;
- 
+
   '/owner':
     ensure => 'file',
     owner  => 'root',
@@ -1025,11 +1025,11 @@ In `init.pp`:
       assert_type(Array[String[1], 1], $package_list) |$expected, $actual| {
         fail("Module ${module_name} does not support ${facts['os']['name']} as the list of packages is of type ${actual}")
       }
-    
+
       package { $package_list:
         ensure => present,
       }
-    
+
       file { "/tmp/${variable}":
         ensure   => present,
         contents => regsubst($tempfile_contents, '\d', '', 'G'),
@@ -1037,12 +1037,12 @@ In `init.pp`:
         group    => '0',
         mode     => '0644',
       }
-    
+
       service { 'myservice':
         ensure    => $service_ensure,
         hasstatus => true,
       }
-     
+
       Package[$package_list] -> Service['myservice']
     }
     ```
@@ -1055,7 +1055,7 @@ In `hiera.yaml`: The default values can be merged if you want to extend with add
 version: 5
 defaults:
   data_hash: yaml_data
- 
+
 hierarchy:
 - name: 'Per Operating System'
   path: "os/%{os.name}.yaml"
@@ -1183,7 +1183,7 @@ A `hiera.yaml` in the root of the module sets the hierarchy for assigning defaul
 ```
 ---
 version: 5
-default_hierarchy: 
+default_hierarchy:
 - name: 'defaults'
   path: 'defaults.yaml'
   data_hash: yaml_data
@@ -1203,7 +1203,7 @@ If you are maintaining old code created prior to Puppet 4.9, you might encounter
 Bad: `params.pp`
 
 ```
-class my_module ( 
+class my_module (
   String $source = $my_module::params::source,
   String $config = $my_module::params::config,
 ) inherits my_module::params {
@@ -1342,7 +1342,7 @@ We recommend always using type signatures for class and defined type parameters.
 
 When dealing with very long type signatures, you can define type aliases and use short definitions. Good naming of aliases can also serve as documentation, making your code easier to read and understand. Or, if necessary, you can turn the 140 line character limit off. For more information on type signatures, see [the `Type` data type](lang_data_type.md#).
 
-**Related information**  
+**Related information**
 
 
 [Modules](style_guide.md#)
@@ -1536,7 +1536,7 @@ Your metadata should follow the following format:
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ 
+      "operatingsystemrelease": [
         "12.04",
         "10.04"
      ]
@@ -1595,7 +1595,7 @@ Multiline descriptions must be uniformly indented by at least one space:
 
 ```
 # @param config_epp Specifies a file to act as a EPP template for the config file.
-#  Valid options: a path (absolute, or relative to the module path). Example value: 
+#  Valid options: a path (absolute, or relative to the module path). Example value:
 #  'ntp/ntp.conf.epp'. A validation error is thrown if you supply both this param **and**
 #  the `config_template` param.
 ```
